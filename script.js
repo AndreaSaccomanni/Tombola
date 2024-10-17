@@ -18,10 +18,11 @@ const btn = document.getElementById("newNumber");
 const newRandomNumber = document.getElementById("newRandomNumber");
 
 const createNumbers = function () {
-  let isPresent = true;
-  let num = 0;
+  let isPresent = true; //inizializzo una variabile per controllare se il numero estratto fa parte della lista drawNumbers
+  let num; //dichiaro num perchè se venisse dichiarata all'interno del ciclo while non sarebbe visibile al suo esterno
   while (isPresent) {
-    num = Math.floor(Math.random() * 91);
+    //creo un ciclo che controlla se il numero estratto è gia stato estratto o meno
+    num = Math.floor(Math.random() * 89) + 1;
     if (drawnNumbers.includes(num)) {
       isPresent = true;
     } else {
@@ -33,7 +34,8 @@ const createNumbers = function () {
   const selectedCell = document.getElementById("cell " + num);
   console.log("cell " + num);
   selectedCell.classList.add("backgroundCell");
-  drawnNumbers.push(selectedCell);
+  drawnNumbers.push(num);
+  console.log(drawnNumbers);
 };
 
 btn.onclick = createNumbers;
